@@ -1,0 +1,11 @@
+<div>
+  <label for="example1">
+    <select type="text">
+      <option *ngFor="let op for optionsList" [value]="op" (click)="changeOption(option)">
+        {{ op }}
+      </option>
+    </select>
+  </label>
+</div>
+
+<utl-messagebox (ok)="confirm()" (cancel)="cancelIt())"></utl-messagebox>

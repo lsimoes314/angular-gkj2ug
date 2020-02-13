@@ -1,0 +1,46 @@
+<ngx-smart-modal [customClass]="'message-box-modal'" #generalModal [identifier]="'generalModal'" [dismissable]="false">
+  <div [ngClass]="{'ds-bg-neutral-3': kindOfMB === 'general', 'ds-bg-contextual-green-4': kindOfMB === 'success', 'ds-bg-contextual-yellow-4':kindOfMB === 'warning', 'ds-bg-contextual-red-4': kindOfMB === 'danger', 'ds-bg-contextual-blue-4': kindOfMB === 'info'}" class="ds-flex ds-flex-align-items-center ds-bg-neutral-3" style="margin-top: -1rem; margin-left:-1rem; margin-right: -1rem; height:2.5rem; padding-left: 1rem;">
+    <div *ngIf="kindOfMB === 'warning'">
+        <span class="ds-icon-size-default ds-icon-alert ds-mar-r-2 ds-text-neutral-1"></span>
+    </div>
+    <div *ngIf="kindOfMB === 'danger'">
+        <span class="ds-icon-size-default ds-icon-close-circle ds-mar-r-2 ds-text-neutral-1"></span>
+    </div>
+    <div *ngIf="kindOfMB === 'info'">
+        <span class="ds-icon-size-default ds-icon-info ds-mar-r-2 ds-text-neutral-1"></span>
+    </div>
+    <div *ngIf="kindOfMB === 'success'">
+        <span class="ds-icon-size-default ds-icon-check ds-mar-r-2 ds-text-neutral-1"></span>
+    </div>
+    <b class="ds-text-neutral-1">{{title}}</b>
+  </div>
+  <br>
+  {{message}}
+  <br>
+  <br>
+  <input *ngIf="isInputBox"  type="text" class="ds-input" id="input_field" (keyup)="onKeyInput($event)" [value]='inputValue'>
+  <br>
+  <hr>
+  <div class="ds-flex ds-flex-justify-end" *ngIf="button === 'SaveCancel'">
+      <button (click)='onSaveButton()' class="ds-button ds-basic ds-width-auto ds-mar-r-2">Save</button>
+      <button (click)="onCancelButton()" class="ds-button ds-danger ds-width-auto">Cancel</button>
+  </div>
+  <div class="ds-flex ds-flex-justify-end" *ngIf="button === 'YesNo'">
+    <button (click)='onYesButton()' class="ds-button ds-basic ds-width-auto ds-mar-r-2">Yes</button>
+    <button (click)="onNoButton()" class="ds-button ds-basic ds-width-auto">No</button>
+  </div>
+  <div class="ds-flex ds-flex-justify-end" *ngIf="button === 'OKCancel'">
+      <button (click)='onOKButton()' class="ds-button ds-basic ds-width-auto ds-mar-r-2">OK</button>
+      <button (click)="onCancelButton()" class="ds-button ds-danger ds-width-auto">Cancel</button>
+  </div>
+  <div class="ds-flex ds-flex-justify-end" *ngIf="button === 'OK'">
+      <button (click)="onCancelButton()" class="ds-button ds-basic ds-width-auto ds-mar-r-2">OK</button>
+  </div>
+  <div class="ds-flex ds-flex-justify-end" *ngIf="button === 'OKonly'">
+    <button (click)="onOkOnlyButton()" class="ds-button ds-basic ds-width-auto ds-mar-r-2">OK</button>
+  </div>
+  <div class="ds-flex ds-flex-justify-end" *ngIf="button === 'TrueFalse'">
+    <button (click)='onTrueButton()' class="ds-button ds-basic ds-width-auto ds-mar-r-2">Yes</button>
+    <button (click)="onFalseButton()" class="ds-button ds-basic ds-width-auto ds-mar-r-2">No</button>
+</div>
+</ngx-smart-modal>
